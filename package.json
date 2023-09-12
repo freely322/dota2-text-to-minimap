@@ -1,0 +1,48 @@
+{
+  "name": "dota2-text-to-minimap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "electron-builder install-app-deps",
+    "start": "electron ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "iohook": {
+    "targets": [
+      "node-88",
+      "electron-87"
+    ],
+    "platforms": [
+      "win32"
+    ],
+    "arches": [
+      "x64"
+    ]
+  },
+  "build": {
+    "appId": "com.dota-text-to-minimap",
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "@jitsi/robotjs": "^0.6.13",
+    "iohook": "^0.9.3"
+  },
+  "devDependencies": {
+    "electron": "^12.2.3",
+    "electron-builder": "22.10.5",
+    "electron-packager": "^17.1.2"
+  }
+}
