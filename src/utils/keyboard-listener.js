@@ -1,4 +1,3 @@
-//console.log(require.resolve.paths("iohook"))
 const keyboardListener = require("iohook");
 const listenToKeyboard = (func) => {
   keyboardListener.on("keydown", event => {

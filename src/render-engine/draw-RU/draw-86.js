@@ -1,4 +1,4 @@
-const {LETTER_HEIGHT, LETTER_WIDTH} = require("../../../constants");
+const {LETTER_HEIGHT, LETTER_WIDTH} = require("../../constants/constants");
 const {moveMouseFast, toggleMouse, moveMouse} = require("../../utils/input-puppeteer");
 
 function draw86(startX, startY) {

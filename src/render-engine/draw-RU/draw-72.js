@@ -1,4 +1,4 @@
-const {LETTER_HEIGHT, LETTER_HALF_HEIGHT} = require("../../../constants");
+const {LETTER_HEIGHT} = require("../../constants/constants");
 const {moveMouseFast, toggleMouse, moveMouse} = require("../../utils/input-puppeteer");
 const {drawCircle, computeX, computeY} = require("../helpers");
 
@@ -21,7 +21,7 @@ function draw72(startX, startY) {
     startY,
   })
   toggleMouse(true)
-  moveMouse(startX, startY + LETTER_HALF_HEIGHT);
+  moveMouse(startX, startY + LETTER_HEIGHT / 2);
   toggleMouse(false);
 }
 

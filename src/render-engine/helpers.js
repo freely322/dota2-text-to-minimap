@@ -1,16 +1,14 @@
-const {LETTER_WIDTH, LETTER_HEIGHT, CURVE_QUALITY, LETTER_HALF_HEIGHT} = require("../../constants");
+const {LETTER_WIDTH, LETTER_HEIGHT, CURVE_QUALITY} = require("../constants/constants");
 const {moveMouse, moveMouseFast, toggleMouse} = require("../utils/input-puppeteer");
 const computeX = ({
   theta,
   r = LETTER_WIDTH / 2,
   j = LETTER_WIDTH / 2,
-  k = LETTER_HEIGHT / 4,
   offset
 }) => offset + (r * Math.cos(theta) + j)
 const computeY = ({
   theta,
   r = LETTER_WIDTH / 2,
-  j = LETTER_WIDTH / 2,
   k = LETTER_HEIGHT / 4,
   offset
 }) => offset + (r * Math.sin(theta) + k)

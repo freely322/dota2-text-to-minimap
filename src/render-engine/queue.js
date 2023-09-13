@@ -32,13 +32,12 @@ const addItemToRenderQueue = (value) => {
     lastMember = newMember
   } else {
     lastMember.next = newMember
-    firstMember = newMember
+    lastMember = newMember
   }
   return ++size
 }
 
-/*parentPort.on('message', (event) => {
-  console.log('worker', event)
+parentPort.on('message', (event) => {
   switch (event.type) {
     case 'add-to-render-queue': {
       addItemToRenderQueue(event.value)
@@ -46,10 +45,11 @@ const addItemToRenderQueue = (value) => {
     }
     case 'reset-queue': {
       resetQueue()
+      parentPort.postMessage({ type: 'appStatusService.setActiveStatus' })
       break
     }
   }
-})*/
+})
 
 module.exports = {
   getItemFromRenderQueue,

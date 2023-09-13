@@ -1,8 +1,8 @@
-const {useMainWindow} = require("../../main");
 const {t} = require("../i18n/language-handler");
-const {electronWorker} = require("../../workers");
+const {getWindow} = require("../window");
+const {renderLoopWorker} = require("../workers");
 
-const writeToConsole = (text) => useMainWindow().webContents.send('console', text)
+const writeToConsole = (text) => getWindow().webContents.send('console', text)
 
 const startType = () => writeToConsole(t('input-handler_start-type'))
 const endType = () => writeToConsole(t('input-handler_end-type'))
@@ -12,10 +12,15 @@ const stopApp = () => writeToConsole(t('app-runner_inactive'))
 
 const drawLetter = (letter) => writeToConsole(t('render_draw-letter', { letter }))
 
-electronWorker.on('message', (event) => {
+renderLoopWorker.on('message', (event) => {
   switch (event.type) {
     case 'consoleService.writeToConsole': {
       writeToConsole(event.value)
+      break
+    }
+    case 'consoleService.drawLetter': {
+      drawLetter(event.value)
+      break
     }
   }
 })

@@ -12,11 +12,12 @@ const disableStartAppButton = () => {
 
 setStartAppButton()
 
-document.getElementById('closeBtn').onclick = () => {
+document.getElementById('close').onclick = () => {
   ipcRenderer.send('close-app')
 }
 
 ipcRenderer.on('status-update', (event, args) => {
+  console.log(event, args)
   if (args === '1') {
     document.getElementById('start-app-button').innerText = 'Выключить'
     document.getElementById('status').className = 'active'

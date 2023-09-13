@@ -1,5 +1,6 @@
-const { app, BrowserWindow } = require('electron');
+const {app, BrowserWindow} = require('electron');
 const {join} = require("path");
+const {setWindow} = require("./window");
 const {initHandlers} = require("./handlers");
 
 let mainWindow;
@@ -11,7 +12,7 @@ const initElectron = () => {
       height: 546,
       frame: false,
       resizable: false,
-      icon: join(__dirname, './icon.ico'),
+      icon: join(__dirname, './assets/icon.ico'),
       webPreferences: {
         disableHtmlFullscreenWindowResize: true,
         nodeIntegration: true,
@@ -21,17 +22,20 @@ const initElectron = () => {
     //mainWindow.webContents.openDevTools();
     mainWindow.setMenu(null)
     mainWindow.setMenuBarVisibility(false)
-    mainWindow.loadFile('index.html');
+    mainWindow.loadFile(join(__dirname, './frontend/index.html'));
   }
 
-  app.whenReady().then(createWindow);
+  app
+    .whenReady()
+    .then(createWindow)
+    .then(() => setWindow(mainWindow))
+    .then(initHandlers);
 
   app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
       app.quit();
     }
   });
-
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow();
@@ -39,13 +43,6 @@ const initElectron = () => {
   });
 }
 
-const useMainWindow = () => {
-  return mainWindow
-}
-
-initElectron()
-initHandlers(mainWindow)
-
 module.exports = {
-  useMainWindow
+  initElectron
 }

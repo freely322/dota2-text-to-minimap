@@ -1,5 +1,5 @@
-const {LETTER_HEIGHT, LETTER_WIDTH} = require("../../../constants");
-const {toggleMouse, moveMouseFast, moveMouseToMinimap, moveMouse} = require("../../utils/input-puppeteer");
+const {LETTER_HEIGHT, LETTER_WIDTH} = require("../../constants/constants");
+const {toggleMouse, moveMouseFast, moveMouse} = require("../../utils/input-puppeteer");
 const {drawCircle, computeX, computeY} = require("../helpers");
 
 function draw221(startX, startY) {

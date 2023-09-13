@@ -1,6 +1,5 @@
-const { parentPort } = require('worker_threads');
-const {measurePerf} = require("../../helpers");
-const {LETTER_SPACING, LINE_HEIGHT, COLUMN_LIMIT, ROW_LIMIT, MINIMAP_POSITION_TUPLE} = require("../../constants");
+const {measurePerf} = require("../helpers/helpers");
+const {LETTER_SPACING, LINE_HEIGHT, COLUMN_LIMIT, ROW_LIMIT, MINIMAP_POSITION_TUPLE} = require("../constants/constants");
 const {toggleKeyboardKey} = require("../utils/input-puppeteer");
 const [width, height] = MINIMAP_POSITION_TUPLE;
 
@@ -16,13 +15,9 @@ const drawWithCaretMove = (draw) => {
   measurePerf(() => {
     const newLetterX = width + (LETTER_SPACING * caretColumn);
     const newLetterY = height + (LINE_HEIGHT * caretRow);
-    //toggleKeyboardKey('control', true)
-    parentPort.postMessage({ type: 'appStatusService.setDrawingStatus' })
-    //appStatusService.setDrawingStatus()
+    toggleKeyboardKey('control', true)
     draw(newLetterX, newLetterY)
-    parentPort.postMessage({ type: 'appStatusService.setWaitingStatus' })
-    //appStatusService.setWaitingStatus()
-    //toggleKeyboardKey('control', false)
+    toggleKeyboardKey('control', false)
     if (caretColumn < COLUMN_LIMIT) {
       caretColumn += 1
       return

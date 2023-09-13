@@ -1,12 +1,11 @@
-const {useMainWindow} = require("../../main");
-const {electronWorker} = require("../../workers");
-
-const setAppStatus = (status) => useMainWindow().webContents.send('status-update', status)
-const setDrawingStatus = () => setAppStatus( '3')
-const setWaitingStatus = () => setAppStatus( '2')
+const {getWindow} = require("../window");
+const {renderLoopWorker} = require("../workers");
+const setAppStatus = (status) => getWindow().webContents.send('status-update', status)
+const setDrawingStatus = () => setAppStatus('3')
+const setWaitingStatus = () => setAppStatus('2')
 const setActiveStatus = () => setAppStatus('1')
 
-electronWorker.on('message', (event) => {
+renderLoopWorker.on('message', (event) => {
   switch (event.type) {
     case 'appStatusService.setDrawingStatus': {
       setDrawingStatus()

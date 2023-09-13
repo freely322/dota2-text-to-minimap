@@ -1,10 +1,11 @@
-const {createMemoizedMousePosition, moveMouseToMinimap, toggleChat} = require("./utils/input-puppeteer");
-const {appStatusService} = require("./message-broker/app-status.service");
-const {consoleService} = require("./message-broker/console.service");
-const {getRenderingStatus, setRenderingStatus} = require("./render-engine/render-engine");
-const {listenToKeyboard} = require("./utils/keyboard-listener");
+const {createMemoizedMousePosition, moveMouseToMinimap, toggleChat} = require("./input-puppeteer");
+const {appStatusService} = require("../message-broker/app-status.service");
+const {consoleService} = require("../message-broker/console.service");
+const {listenToKeyboard} = require("./keyboard-listener");
+const {getRenderingStatus, setRenderingStatus} = require("./render");
+const {resetQueue} = require("../render-engine");
 
-const chatListener = (chatActiveHandler, chatInactiveHandler) => {
+const inputHandler = (chatActiveHandler, chatInactiveHandler) => {
   const mousePosition = createMemoizedMousePosition()
   listenToKeyboard((event) => {
     if (getRenderingStatus() && event.rawcode === 13) {
@@ -25,8 +26,11 @@ const chatListener = (chatActiveHandler, chatInactiveHandler) => {
       consoleService.endType()
       appStatusService.setActiveStatus()
       setRenderingStatus(false);
-      mousePosition.reset();
+      resetQueue()
       toggleChat()
+      setTimeout(() => {
+        mousePosition.reset();
+      }, 1000)
       return
     }
     if (getRenderingStatus()) {
@@ -39,5 +43,5 @@ const chatListener = (chatActiveHandler, chatInactiveHandler) => {
 }
 
 module.exports = {
-  chatListener
+  inputHandler
 }

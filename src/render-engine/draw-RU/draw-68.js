@@ -1,4 +1,4 @@
-const {LETTER_HEIGHT} = require("../../../constants");
+const {LETTER_HEIGHT} = require("../../constants/constants");
 const {moveMouseFast, toggleMouse, moveMouse} = require("../../utils/input-puppeteer");
 const {drawCircle, computeX, computeY} = require("../helpers");
 
