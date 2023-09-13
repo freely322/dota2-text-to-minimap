@@ -1,16 +1,16 @@
-const keyboardListener = require("iohook");
+const iohook = require("iohook");
 const listenToKeyboard = (func) => {
-  keyboardListener.on("keydown", event => {
+  iohook.on("keydown", event => {
     func(event)
   })
 }
 
 const startKeyboardListeners = () => {
-  keyboardListener.start();
+  iohook.start();
 }
 
 const stopKeyboardListeners = () => {
-  keyboardListener.stop();
+  iohook.stop();
 }
 
 module.exports = {

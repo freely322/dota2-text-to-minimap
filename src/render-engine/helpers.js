@@ -1,5 +1,5 @@
-const {LETTER_WIDTH, LETTER_HEIGHT, CURVE_QUALITY} = require("../constants/constants");
-const {moveMouse, moveMouseFast, toggleMouse} = require("../utils/input-puppeteer");
+const {LETTER_WIDTH, LETTER_HEIGHT, CURVE_QUALITY} = require("../constants/common");
+const {moveMouse, moveMouseFast, toggleMouse} = require("../utils/robot");
 const computeX = ({
   theta,
   r = LETTER_WIDTH / 2,
