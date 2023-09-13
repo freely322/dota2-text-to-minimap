@@ -1,6 +1,4 @@
-const {initElectron} = require("./main");
-const {initHandlers} = require("./handlers");
+require("./src/workers");
+const {initElectron} = require("./src/main");
 
-
-initElectron();
-initHandlers();
+initElectron()

@@ -1,0 +1,38 @@
+const robot = require("@jitsi/robotjs");
+
+const {
+  height: SCREEN_HEIGHT,
+} = robot.getScreenSize();
+
+const MINIMAP_SIZE = SCREEN_HEIGHT / 6
+const MINIMAP_OFFSET = SCREEN_HEIGHT / 22
+
+const MINIMAP_POSITION_TUPLE = [MINIMAP_OFFSET, SCREEN_HEIGHT - MINIMAP_SIZE - MINIMAP_OFFSET]
+
+const LETTER_HEIGHT = 30
+const LETTER_WIDTH = 15
+
+const LINE_HEIGHT = LETTER_HEIGHT * 1.2
+const LETTER_SPACING = LETTER_WIDTH + 7
+
+const ROW_LIMIT = Math.floor(MINIMAP_SIZE / LINE_HEIGHT)
+const COLUMN_LIMIT = Math.floor(MINIMAP_SIZE / LETTER_SPACING)
+
+const DEFAULT_MOUSE_DELAY = 40;
+
+const TYPING_LANGUAGE = 'RU'
+
+const CURVE_QUALITY = Math.PI / 3 // more than 0, less than Math.PI - less => more accurate curves
+
+module.exports = {
+  LETTER_HEIGHT,
+  LETTER_WIDTH,
+  LINE_HEIGHT,
+  LETTER_SPACING,
+  CURVE_QUALITY,
+  ROW_LIMIT,
+  TYPING_LANGUAGE,
+  COLUMN_LIMIT,
+  DEFAULT_MOUSE_DELAY,
+  MINIMAP_POSITION_TUPLE
+}

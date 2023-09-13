@@ -1,0 +1,7 @@
+{
+  "input-handler_start-type": "⌨\uFE0F Печатай...",
+  "input-handler_end-type": "✋ Больше не печатай...",
+  "app-runner_inactive": "❌ Программа не активна",
+  "app-runner_active": "✅ Нажми \"\\\" чтобы начать",
+  "render_draw-letter": "✍\uFE0F Рисуем букву \"{{letter}}\"..."
+}
