@@ -1,7 +1,7 @@
 const {drawWithCaretMove} = require("./caret-handler");
 const {TYPING_LANGUAGE} = require("../constants/constants");
 const {getItemFromRenderQueue} = require("./queue");
-const {parentPort } = require('worker_threads')
+const {parentPort} = require('worker_threads')
 const {LANGUAGE_RU} = require("../i18n/languages");
 
 let isLooping = false;
@@ -46,7 +46,6 @@ const drawPressedLetterFromQueue = () => {
 }
 
 const startRenderLoop = () => {
-  console.log('Start render engine')
   interval = setInterval(() => {
     if (isLooping) {
       drawPressedLetterFromQueue()

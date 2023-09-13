@@ -27,9 +27,9 @@ const inputHandler = (chatActiveHandler, chatInactiveHandler) => {
       appStatusService.setActiveStatus()
       setRenderingStatus(false);
       resetQueue()
-      toggleChat()
       setTimeout(() => {
         mousePosition.reset();
+        toggleChat()
       }, 1000)
       return
     }

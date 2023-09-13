@@ -19,7 +19,6 @@ function draw76(startX, startY) {
   toggleMouse(true);
   moveMouse(startX + LETTER_WIDTH, startY + LETTER_HEIGHT);
   toggleMouse(false);
-
 }
 
 module.exports = {

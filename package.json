@@ -1,6 +1,7 @@
 {
   "name": "dota2-text-to-minimap",
-  "version": "1.0.2",
+  "productName": "Dota 2 Minimap Typer",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -25,6 +26,12 @@
   },
   "build": {
     "appId": "com.dota-text-to-minimap",
+    "asarUnpack": [
+      "./src/**",
+      "./node_modules/@jitsi/robotjs/**",
+      "./node_modules/node-gyp-build/**",
+      "./node_modules/node-addon-api/**"
+    ],
     "win": {
       "target": [
         {

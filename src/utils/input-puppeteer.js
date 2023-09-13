@@ -2,7 +2,7 @@ const robot = require("@jitsi/robotjs");
 const {DEFAULT_MOUSE_DELAY, MINIMAP_POSITION_TUPLE} = require("../constants/constants");
 
 robot.setMouseDelay(DEFAULT_MOUSE_DELAY);
-robot.setKeyboardDelay(0);
+robot.setKeyboardDelay(1);
 
 const moveMouse = (x, y, delay = DEFAULT_MOUSE_DELAY) => {
   robot.setMouseDelay(delay)
@@ -11,7 +11,7 @@ const moveMouse = (x, y, delay = DEFAULT_MOUSE_DELAY) => {
 }
 
 const moveMouseFast = (x, y) => {
-  robot.setMouseDelay(0)
+  robot.setMouseDelay(15)
   robot.moveMouse(x, y)
   robot.setMouseDelay(DEFAULT_MOUSE_DELAY)
 }
@@ -59,6 +59,11 @@ const moveMouseToMinimap = () => {
 }
 
 const toggleChat = () => {
+  robot.keyToggle('shift', 'down')
+  robot.keyToggle('home', 'down')
+  robot.keyToggle('shift', 'up')
+  robot.keyToggle('home', 'up')
+  pressKeyboardKey('backspace')
   pressKeyboardKey('enter')
 }
 
