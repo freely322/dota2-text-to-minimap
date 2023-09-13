@@ -1,5 +1,5 @@
-const {drawWithCaretMove} = require("./caret-handler");
-const {TYPING_LANGUAGE} = require("../constants/constants");
+const {drawWithCaretMove} = require("./caret");
+const {TYPING_LANGUAGE} = require("../constants/common");
 const {getItemFromRenderQueue} = require("./queue");
 const {parentPort} = require('worker_threads')
 const {LANGUAGE_RU} = require("../i18n/languages");
