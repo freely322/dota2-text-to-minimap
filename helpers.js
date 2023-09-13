@@ -6,6 +6,9 @@ const measurePerf = (func) => {
   console.log(`${performance.now() - start}ms`)
 }
 
+const noop = () => {}
+
 module.exports = {
-  measurePerf
+  measurePerf,
+  noop
 }

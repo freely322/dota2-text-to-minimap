@@ -22,7 +22,9 @@ const COLUMN_LIMIT = Math.floor(MINIMAP_SIZE / LETTER_SPACING)
 
 const DEFAULT_MOUSE_DELAY = 40;
 
-const CURVE_QUALITY = Math.PI / 4 // more than 0, less than Math.PI - less => more accurate curves
+const TYPING_LANGUAGE = 'RU'
+
+const CURVE_QUALITY = Math.PI / 3 // more than 0, less than Math.PI - less => more accurate curves
 
 module.exports = {
   LETTER_HEIGHT,
@@ -33,6 +35,7 @@ module.exports = {
   LETTER_SPACING,
   CURVE_QUALITY,
   ROW_LIMIT,
+  TYPING_LANGUAGE,
   COLUMN_LIMIT,
   DEFAULT_MOUSE_DELAY,
   MINIMAP_POSITION_TUPLE

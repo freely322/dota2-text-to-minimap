@@ -1,16 +1,8 @@
 const { app, BrowserWindow } = require('electron');
 const {join} = require("path");
+const {initHandlers} = require("./handlers");
 
 let mainWindow;
-let drawing = false;
-
-const setDrawing = (state) => {
-  drawing = state
-}
-
-const getDrawing = () => {
-  return drawing
-}
 
 const initElectron = () => {
   function createWindow() {
@@ -51,9 +43,9 @@ const useMainWindow = () => {
   return mainWindow
 }
 
+initElectron()
+initHandlers(mainWindow)
+
 module.exports = {
-  setDrawing,
-  getDrawing,
-  useMainWindow,
-  initElectron
+  useMainWindow
 }
