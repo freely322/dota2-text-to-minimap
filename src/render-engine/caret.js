@@ -1,6 +1,6 @@
-const {measurePerf} = require("../helpers/helpers");
-const {LETTER_SPACING, LINE_HEIGHT, COLUMN_LIMIT, ROW_LIMIT, MINIMAP_POSITION_TUPLE} = require("../constants/constants");
-const {toggleKeyboardKey} = require("../utils/input-puppeteer");
+const {measurePerf} = require("../helpers/common");
+const {LETTER_SPACING, LINE_HEIGHT, COLUMN_LIMIT, ROW_LIMIT, MINIMAP_POSITION_TUPLE} = require("../constants/common");
+const {toggleKeyboardKey} = require("../utils/robot");
 const [width, height] = MINIMAP_POSITION_TUPLE;
 
 let caretColumn = 0;

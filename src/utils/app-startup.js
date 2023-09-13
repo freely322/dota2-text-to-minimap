@@ -1,7 +1,7 @@
 const {inputHandler} = require('./input-handler')
-const {noop} = require("../helpers/helpers");
-const {stopKeyboardListeners, startKeyboardListeners} = require("./keyboard-listener");
-const {consoleService} = require("../message-broker/console.service");
+const {noop} = require("../helpers/common");
+const {stopKeyboardListeners, startKeyboardListeners} = require("./iohook");
+const {consoleService} = require("../services/console.service");
 const {addToRenderQueue} = require("../render-engine");
 
 let isAppStarted = false

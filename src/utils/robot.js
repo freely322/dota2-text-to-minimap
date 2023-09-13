@@ -1,5 +1,5 @@
 const robot = require("@jitsi/robotjs");
-const {DEFAULT_MOUSE_DELAY, MINIMAP_POSITION_TUPLE} = require("../constants/constants");
+const {DEFAULT_MOUSE_DELAY, MINIMAP_POSITION_TUPLE} = require("../constants/common");
 
 robot.setMouseDelay(DEFAULT_MOUSE_DELAY);
 robot.setKeyboardDelay(1);
