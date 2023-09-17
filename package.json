@@ -1,12 +1,13 @@
 {
   "name": "dota2-text-to-minimap",
   "productName": "Dota 2 Minimap Typer",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
     "start": "electron ./index.js",
+    "build": "npx electron-builder --win --x64",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
