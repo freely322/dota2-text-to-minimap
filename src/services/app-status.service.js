@@ -1,9 +1,26 @@
-const {getWindow} = require("../window");
+const {app} = require('electron')
+
 const {renderLoopWorker} = require("../workers");
-const setAppStatus = (status) => getWindow().webContents.send('status-update', status)
+
+let _appStatus = '0'
+
+const getAppStatus = () => _appStatus
+
+const setAppStatus = (status) => {
+  app.emit('status-update', status)
+  _appStatus = status
+}
 const setDrawingStatus = () => setAppStatus('3')
 const setWaitingStatus = () => setAppStatus('2')
 const setActiveStatus = () => setAppStatus('1')
+
+app.on('get-app-state', () => {
+  app.emit('status-update', _appStatus)
+})
+
+app.on('status-update', (status) => {
+  _appStatus = status
+})
 
 renderLoopWorker.on('message', (event) => {
   switch (event.type) {
@@ -33,5 +50,6 @@ const appStatusService = {
 }
 
 module.exports = {
+  getAppStatus,
   appStatusService
 }

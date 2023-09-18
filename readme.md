@@ -7,6 +7,7 @@ With my application, you can "type" on the Dota 2 mini-map. As you type letters 
 ## Features 🌟
 - Draw letters and numbers directly on the Dota 2 mini-map as you type.
 - Currently supports Russian language and numeric input.
+- Simple in-game overlay *(only DX11)*
 
 ## Installation 📥
 
@@ -36,7 +37,13 @@ With my application, you can "type" on the Dota 2 mini-map. As you type letters 
 3. Once inside Dota 2, press the `\` key.
 4. Start typing! As you type, the corresponding symbols will appear on the mini-map.
 5. Use the `backspace` key to reset the caret position (this will take effect after all previously typed letters are drawn).
-6. Press the `\` key again to pause or stop the input handling.
+6. Press the `\` key again to pause the input handling.
+
+## In-game overlay 🔗
+Minimize app using button next to close, and use it as **in-game overlay**
+> ### **⚠️ ONLY DirectX 11 SUPPORTED**
+> ***Adjust settings in Dota to use this***
+
 
 ## Built With 🧰
 
