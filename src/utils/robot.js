@@ -74,6 +74,7 @@ module.exports = {
   dragMouse,
   toggleMouse,
   toggleChat,
+  pressKeyboardKey,
   mouseAwareAction,
   moveMouseToMinimap,
   createMemoizedMousePosition

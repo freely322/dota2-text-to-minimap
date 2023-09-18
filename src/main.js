@@ -2,6 +2,7 @@ const {app, BrowserWindow} = require('electron');
 const {join} = require("path");
 const {setWindow} = require("./window");
 const {initHandlers} = require("./handlers");
+const {broadcast} = require("./helpers/electron");
 
 let mainWindow;
 
@@ -12,6 +13,8 @@ const initElectron = () => {
       height: 546,
       frame: false,
       resizable: false,
+      minimizable: true,
+      backgroundColor: '#323232',
       icon: join(__dirname, './assets/icon.ico'),
       webPreferences: {
         disableHtmlFullscreenWindowResize: true,
@@ -19,7 +22,7 @@ const initElectron = () => {
         contextIsolation: false
       }
     });
-    //mainWindow.webContents.openDevTools();
+    //mainWindow.webContents.openDevTools({ mode: 'detach' });
     mainWindow.setMenu(null)
     mainWindow.setMenuBarVisibility(false)
     mainWindow.loadFile(join(__dirname, './frontend/index.html'));
@@ -36,10 +39,9 @@ const initElectron = () => {
       app.quit();
     }
   });
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow();
-    }
+
+  app.on('status-update', (status) => {
+    broadcast('status-update', status)
   });
 }
 
