@@ -1,16 +1,25 @@
-const {t} = require("../i18n/language-handler");
 const {getWindow} = require("../window");
 const {renderLoopWorker} = require("../workers");
+const {t} = require("../i18n/language-handler");
 
-const writeToConsole = (text) => getWindow().webContents.send('console', text)
+let consoleContent = [];
 
-const startType = () => writeToConsole(t('input-handler_start-type'))
-const endType = () => writeToConsole(t('input-handler_end-type'))
+const writeToConsole = (text, variables) => {
+  consoleContent = [...consoleContent, [text, variables]]
+  getWindow().webContents.send('console', t(text, variables))
+}
 
-const startApp = () => writeToConsole(t('app-runner_active'))
-const stopApp = () => writeToConsole(t('app-runner_inactive'))
+const getConsoleContent = () => consoleContent
 
-const drawLetter = (letter) => writeToConsole(t('render_draw-letter', { letter }))
+const startType = () => writeToConsole('input-handler_start-type')
+const endType = () => writeToConsole('input-handler_end-type')
+
+const startApp = () => writeToConsole('app-runner_active')
+const stopApp = () => writeToConsole('app-runner_inactive')
+
+const inputLanguageChanged = (lng) => writeToConsole(`render_input-language_changed_${lng}`)
+
+const drawLetter = (letter) => writeToConsole('render_draw-letter', { letter })
 
 renderLoopWorker.on('message', (event) => {
   switch (event.type) {
@@ -30,7 +39,9 @@ const consoleService = {
   endType,
   stopApp,
   startApp,
-  drawLetter
+  drawLetter,
+  inputLanguageChanged,
+  getConsoleContent
 }
 
 module.exports = {

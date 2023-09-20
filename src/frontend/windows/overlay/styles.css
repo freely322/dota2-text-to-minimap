@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     border: 0;
+    box-sizing: border-box;
 }
 
 .active {
@@ -58,7 +59,6 @@ body {
     align-items: center;
     padding: 4px 8px;
     color: #969696;
-    height: 30px;
     text-transform: uppercase;
     font-weight: lighter;
     letter-spacing: 2px;
@@ -184,4 +184,18 @@ body::-webkit-scrollbar {
 
 #restore:hover {
     filter: invert(100%);
+}
+
+#language {
+    background-position: center;
+    background-size: 60% 60%;
+    background-repeat: no-repeat;
+}
+
+.flag-UA {
+    background-image: url("../../../assets/ukraine.png");
+}
+
+.flag-RU {
+    background-image: url("../../../assets/russia.png");
 }

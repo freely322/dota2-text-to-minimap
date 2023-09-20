@@ -10,8 +10,8 @@ const openOverlay = () => {
   }
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
   overlayWindow = new BrowserWindow({
-    width: 150,
-    height: 40,
+    width: 160,
+    height: 36,
     x: Math.round(width / 8.5),
     y: Math.round(height / 100),
     backgroundColor: '#323232',

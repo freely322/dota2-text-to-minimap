@@ -3,8 +3,25 @@ const {join} = require("path");
 const {setWindow} = require("./window");
 const {initHandlers} = require("./handlers");
 const {broadcast} = require("./helpers/electron");
+const {LANGUAGE_UA, LANGUAGE_RU} = require("./i18n/languages");
+const {getAppLanguage} = require("./i18n/language-handler");
+const { version } = require('../package.json')
 
 let mainWindow;
+
+const getLocalizedPath = (lng) => {
+  switch (lng) {
+    case LANGUAGE_UA: {
+      return join(__dirname, './frontend/index-ua.html')
+    }
+    case LANGUAGE_RU: {
+      return join(__dirname, './frontend/index-ru.html')
+    }
+    default: {
+      return join(__dirname, './frontend/loading.html')
+    }
+  }
+}
 
 const initElectron = () => {
   function createWindow() {
@@ -25,13 +42,15 @@ const initElectron = () => {
     //mainWindow.webContents.openDevTools({ mode: 'detach' });
     mainWindow.setMenu(null)
     mainWindow.setMenuBarVisibility(false)
-    mainWindow.loadFile(join(__dirname, './frontend/index.html'));
+    mainWindow.loadFile(getLocalizedPath(getAppLanguage()));
   }
 
   app
     .whenReady()
     .then(createWindow)
-    .then(() => setWindow(mainWindow))
+    .then(() => {
+      setWindow(mainWindow)
+    })
     .then(initHandlers);
 
   app.on('window-all-closed', () => {
@@ -43,6 +62,17 @@ const initElectron = () => {
   app.on('status-update', (status) => {
     broadcast('status-update', status)
   });
+
+  app.on('input-language-update', (lng) => {
+    broadcast('input-language-update', lng)
+  })
+
+  app.on('app-language-update', (lng) => {
+    mainWindow.webContents.send('app-language-update', lng)
+    mainWindow.loadFile(getLocalizedPath(lng)).then(() => {
+      mainWindow.webContents.send('set-version', version)
+    })
+  })
 }
 
 module.exports = {

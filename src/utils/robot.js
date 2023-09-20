@@ -56,6 +56,9 @@ const createMemoizedMousePosition = () => {
 
 const moveMouseToMinimap = () => {
   moveMouseFast(...MINIMAP_POSITION_TUPLE)
+  toggleMouse(true)
+  moveMouse(MINIMAP_POSITION_TUPLE[0] + 5, MINIMAP_POSITION_TUPLE[1] + 5)
+  toggleMouse(false)
 }
 
 const toggleChat = () => {
