@@ -6,7 +6,7 @@ With my application, you can "type" on the Dota 2 mini-map. As you type letters 
 
 ## Features 🌟
 - Draw letters and numbers directly on the Dota 2 mini-map as you type.
-- Currently supports Russian language and numeric input.
+- Currently supports UA and RU language and numeric input.
 - Simple in-game overlay *(only DX11)*
 
 ## Installation 📥
