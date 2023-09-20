@@ -1,8 +1,7 @@
 const {drawWithCaretMove, resetCaret} = require("./caret");
-const {TYPING_LANGUAGE} = require("../constants/common");
 const {getItemFromRenderQueue} = require("./queue");
 const {parentPort} = require('worker_threads')
-const {LANGUAGE_RU} = require("../i18n/languages");
+const {LANGUAGE_RU, LANGUAGE_UA} = require("../i18n/languages");
 
 let isLooping = false;
 let interval = null
@@ -16,10 +15,12 @@ const setLoopStatus = (status) => {
 }
 
 const alphabet = {
-  [LANGUAGE_RU]: require(`./draw-RU`)
+  [LANGUAGE_RU]: require(`./draw-RU`),
+  [LANGUAGE_UA]: require(`./draw-UA`)
 }
 
 const numbers = require('./draw-NUM')
+const {getCurrentInputLanguage} = require("./language");
 
 const drawPressedLetterFromQueue = () => {
   const event = getItemFromRenderQueue()
@@ -36,7 +37,7 @@ const drawPressedLetterFromQueue = () => {
     return
   }
   try {
-    const char = alphabet[TYPING_LANGUAGE][rawcode] || numbers[rawcode];
+    const char = alphabet[getCurrentInputLanguage()][rawcode] || numbers[rawcode];
     if (char) {
       parentPort.postMessage({ type: 'appStatusService.setDrawingStatus' })
       drawWithCaretMove(char.draw)

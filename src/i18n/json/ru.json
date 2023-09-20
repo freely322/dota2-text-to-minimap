@@ -3,5 +3,9 @@
   "input-handler_end-type": "✋ Больше не печатай...",
   "app-runner_inactive": "❌ Программа не активна",
   "app-runner_active": "✅ Нажми \"\\\" чтобы начать",
-  "render_draw-letter": "✍\uFE0F Рисуем \"{{letter}}\"..."
+  "app-runner_activate": "Включить",
+  "app-runner_deactivate": "Выключить",
+  "render_draw-letter": "✍\uFE0F Рисуем \"{{letter}}\"...",
+  "render_input-language_changed_RU": "✍\uFE0F Язык ввода изменен на русский",
+  "render_input-language_changed_UA": "✍\uFE0F Язык ввода изменен на украинский"
 }

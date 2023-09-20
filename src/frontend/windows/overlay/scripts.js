@@ -28,6 +28,10 @@ document.getElementById('close').onclick = () => {
   ipcRenderer.send('close-overlay')
 }
 
+document.getElementById('language').onclick = () => {
+  ipcRenderer.send('input-language-toggle')
+}
+
 document.getElementById('restore').onclick = () => {
   ipcRenderer.send('restore-app')
 }
@@ -63,8 +67,16 @@ const handleAppStatus = (status) => {
   setStartAppButton()
 }
 
+const handleLanguage = (lng) => {
+  document.getElementById('language').className = `button flag-${lng}`
+}
+
 ipcRenderer.on('status-update', (event, args) => {
   handleAppStatus(args)
+})
+
+ipcRenderer.on('input-language-update', (event, args) => {
+  handleLanguage(args)
 })
 
 ipcRenderer.on('console', (event, args) => {
@@ -74,3 +86,4 @@ ipcRenderer.on('console', (event, args) => {
 })
 
 ipcRenderer.send('restore-state')
+ipcRenderer.send('restore-input-language')

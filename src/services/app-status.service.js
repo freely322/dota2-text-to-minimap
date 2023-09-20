@@ -4,8 +4,6 @@ const {renderLoopWorker} = require("../workers");
 
 let _appStatus = '0'
 
-const getAppStatus = () => _appStatus
-
 const setAppStatus = (status) => {
   app.emit('status-update', status)
   _appStatus = status
@@ -50,6 +48,5 @@ const appStatusService = {
 }
 
 module.exports = {
-  getAppStatus,
   appStatusService
 }

@@ -1,0 +1,11 @@
+{
+  "input-handler_start-type": "⌨\uFE0F Друкуй...",
+  "input-handler_end-type": "✋ Більше не друкуй...",
+  "app-runner_inactive": "❌ Програма не активна",
+  "app-runner_active": "✅ Натисни \"\\\" щоб почати",
+  "app-runner_activate": "Ввімкнути",
+  "app-runner_deactivate": "Вимкнути",
+  "render_draw-letter": "✍\uFE0F Малюємо \"{{letter}}\"...",
+  "render_input-language_changed_RU": "✍\uFE0F Мову вводу змінено на російську",
+  "render_input-language_changed_UA": "✍\uFE0F Мову вводу змінено на українську"
+}

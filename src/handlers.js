@@ -4,6 +4,9 @@ const {startApp} = require("./utils/app-startup");
 const {pressKeyboardKey} = require("./utils/robot");
 const {broadcast, closeAllWindows} = require("./helpers/electron");
 const {openOverlay} = require("./frontend/windows/overlay/overlay");
+const {inputLanguageService} = require("./services/input-language.service");
+const {toggleAppLanguage, getAppLanguage, setAppLanguage} = require("./i18n/language-handler");
+const {consoleService} = require("./services/console.service");
 
 const initHandlers = () => {
   ipcMain.on('start-app', () => {
@@ -23,6 +26,29 @@ const initHandlers = () => {
   ipcMain.on('minimize-app', () => {
     getWindow().minimize();
     openOverlay()
+  });
+  ipcMain.on('input-language-toggle', () => {
+    inputLanguageService.toggleCurrentInputLanguage()
+  });
+  ipcMain.on('app-language-toggle', () => {
+    toggleAppLanguage()
+  });
+  ipcMain.on('restore-input-language', () => {
+    const result = inputLanguageService.getCurrentInputLanguage()
+    app.emit('input-language-update', result)
+    broadcast('input-language-update', result)
+  })
+  ipcMain.on('toggle-app-language', () => {
+    toggleAppLanguage()
+  })
+  ipcMain.on('set-app-language', (event, args) => {
+    setAppLanguage(args)
+  })
+  ipcMain.on('get-app-language', (event) => {
+    event.returnValue = getAppLanguage();
+  });
+  ipcMain.on('get-console-content', (event) => {
+    event.returnValue = consoleService.getConsoleContent();
   });
 }
 
